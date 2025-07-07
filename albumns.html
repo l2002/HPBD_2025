@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Album Kỷ Niệm</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Lightbox CSS -->
+    <style>
+      body {
+        margin: 0;
+        font-family: "EB Garamond", serif;
+        background: #fffaf3 url("vintage-paper.jpg") no-repeat center center
+          fixed;
+        background-size: cover;
+      }
+
+      .album-container {
+        max-width: 1000px;
+        margin: 6vh auto;
+        padding: 40px 20px;
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 14px;
+        border: 1px solid #d2b48c;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .album-title {
+        text-align: center;
+        font-size: 2.8rem;
+        color: #a0522d;
+        font-family: "Great Vibes", cursive;
+        margin-bottom: 40px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+      }
+
+      .photo {
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transform-origin: center;
+        opacity: 0;
+        transform: translateY(60px) scale(0.95) rotate(-1deg);
+      }
+
+      .photo img {
+        width: 100%;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .photo:hover img {
+        transform: scale(1.06);
+      }
+
+      .btn-back {
+        display: block;
+        margin: 50px auto 0;
+        padding: 12px 30px;
+        background-color: #9d6b53;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-family: "EB Garamond", serif;
+        cursor: pointer;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background-color: #814e3d;
+      }
+
+      /* Lightbox */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90vh;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      @media (max-width: 500px) {
+        .album-title {
+          font-size: 2rem;
+        }
+        .album-container {
+          margin: 4vh 10px;
+          padding: 25px 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="album-container">
+      <h2 class="album-title">✨ Những Khoảnh Khắc Đáng Nhớ</h2>
+      <div class="gallery">
+        <div class="photo"><img src="img/1.jpg" alt="Ảnh 1" /></div>
+        <div class="photo"><img src="img/2.jpg" alt="Ảnh 2" /></div>
+        <div class="photo"><img src="img/3.png" alt="Ảnh 3" /></div>
+        <div class="photo"><img src="img/4.png" alt="Ảnh 4" /></div>
+      </div>
+
+      <button class="btn-back" onclick="window.location.href='index.html'">
+        ← Quay lại thư
+      </button>
+      <button
+        class="btn-back"
+        onclick="window.location.href='https://l2002.github.io/HPBD_KimDang/'"
+      >
+        Xem lại web sinh nhật lần thứ 20
+      </button>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <img src="" alt="Zoom" />
+    </div>
+
+    <!-- Audio -->
+    <audio
+      id="clickSound"
+      src="[Vietsub Lyrics] Time machine - mj apanay (feat. aren park).mp3"
+      preload="auto"
+    ></audio>
+
+    <!-- GSAP + Lightbox logic -->
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Scroll animation
+      gsap.utils.toArray(".photo").forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotate: 0,
+          duration: 0.8,
+          delay: i * 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+
+      // Lightbox + Sound
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = lightbox.querySelector("img");
+      const clickSound = document.getElementById("clickSound");
+
+      document.querySelectorAll(".photo img").forEach((img) => {
+        img.addEventListener("click", () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+          lightboxImg.src = img.src;
+          lightbox.classList.add("active");
+        });
+      });
+
+      lightbox.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thư Gửi Em</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=EB+Garamond&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f3ead7;
+        font-family: "EB Garamond", serif;
+        background-image: url("vintage-paper.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: auto;
+      }
+
+      .container {
+        max-width: 620px;
+        margin: 8vh auto;
+        padding: 50px 40px;
+        background: rgba(255, 248, 230, 0.9);
+        border-radius: 16px;
+        border: 2px solid #c9aa88;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        position: relative;
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        width: 100%; /* Thêm dòng này */
+        box-sizing: border-box; /* Đảm bảo padding không làm tràn khung */
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        text-align: center;
+        font-size: 3rem;
+        color: #b5483f;
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 0 #fff8f1;
+      }
+
+      .lined-paper {
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent,
+          transparent 24px,
+          rgba(0, 0, 0, 0.12) 1px
+        );
+        padding: 25px;
+        font-size: 1.15rem;
+        line-height: 1.75;
+        color: #3d2f2b;
+        border-left: 3px solid #c2a57d;
+        border-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.4);
+        white-space: pre-wrap;
+      }
+
+      .btn {
+        display: block;
+        margin: 30px auto 0;
+        background-color: #9d6b53;
+        color: #fff9f4;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 40px;
+        font-size: 1.05rem;
+        cursor: pointer;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease;
+        font-family: "EB Garamond", serif;
+      }
+
+      .btn:hover {
+        background-color: #814e3d;
+      }
+
+      .flower {
+        position: absolute;
+        top: 140px;
+        right: 10px;
+        width: 120px;
+        rotate: 12deg;
+        z-index: 2;
+        opacity: 0.8;
+        filter: sepia(0.6);
+      }
+
+      #letter {
+        text-align: justify;
+        font-family: "Great Vibes", cursive;
+        font-size: 1.4rem;
+      }
+      .audio-control {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 248, 240, 0.95);
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        font-family: "EB Garamond", serif;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+      }
+
+      .container::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: 0;
+        right: 0;
+        background: radial-gradient(
+          circle at bottom right,
+          #d6c1a5 0%,
+          transparent 70%
+        );
+        border-bottom-right-radius: 16px;
+      }
+
+      @media (max-width: 500px) {
+        .container {
+          margin: 5vh 15px;
+          padding: 25px 20px;
+          width: auto; /* Thêm dòng này để override width: 100% nếu cần */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="audio-control" onclick="toggleMusic()">🎵 Bật / Tắt nhạc</div>
+
+    <div class="container">
+      <span>
+        <h1>Mừng Sinh Nhật Lần Thứ &nbsp<span id="age">21</span></h1>
+      </span>
+      <div class="lined-paper" id="letter"></div>
+      <button class="btn" onclick="window.location.href='albumns.html'">
+        🌸 Đọc tiếp
+      </button>
+
+      <img src="img/img.png" alt="hoa" class="flower" />
+    </div>
+
+    <audio id="bgmusic" autoplay loop>
+      <source
+        src="[Vietsub Lyrics] Time machine - mj apanay (feat. aren park).mp3"
+        type="audio/mp3"
+      />
+    </audio>
+
+    <div
+      class="position-fixed top-0 end-0 p-3"
+      style="margin-top: 50px"
+      style="z-index: 1055"
+    >
+      <div
+        id="liveToast"
+        class="toast hide"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Thông báo</strong>
+          <small class="text-muted">Bây giờ</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastBody"></div>
+      </div>
+    </div>
+    <script>
+      const content = `
+  Em yêu dấu,
+  Lá thư này viết trên nền giấy cũ, nhưng chứa đựng tình cảm anh luôn mới.
+  Mỗi dòng là một nhịp đập con tim – nhẹ nhàng, chậm rãi, và đầy yêu thương.
+  Dù năm tháng có trôi, tình anh dành cho em vẫn dịu dàng như buổi sớm ban mai...
+  — Anh
+`;
+
+      let i = 0;
+      function typeWriter() {
+        const el = document.getElementById("letter");
+        if (i < content.length) {
+          el.innerHTML += content.charAt(i);
+          i++;
+          setTimeout(typeWriter, 80);
+        }
+      }
+
+      function toggleMusic() {
+        const music = document.getElementById("bgmusic");
+        const toastBody = document.getElementById("toastBody");
+        const toastEl = document.getElementById("liveToast");
+
+        if (music.paused) {
+          music.play();
+          toastBody.innerText = "🎵 Nhạc đã bật";
+        } else {
+          music.pause();
+          toastBody.innerText = "🔇 Nhạc đã tắt";
+        }
+
+        // Hiện toast
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+      }
+
+      window.onload = typeWriter;
+    </script>
+
+    <script type="module">
+      // Glitch
+      import { annotate } from "https://unpkg.com/rough-notation?module";
+      const n3 = document.querySelector("#age");
+      const a3 = annotate(n3, { type: "circle", color: "red" });
+
+      a3.show();
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
