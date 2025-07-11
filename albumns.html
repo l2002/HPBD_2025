@@ -81,23 +81,32 @@
         transform: scale(1.02);
       }
 
-      .btn-back {
-        display: block;
-        margin: 20px auto 0;
-        padding: 12px 30px;
-        background-color: #9d6b53;
-        color: white;
+      .btn-vintage {
+        background-color: #8b5e3c;
+        color: #fffaf0;
         border: none;
-        border-radius: 30px;
-        font-size: 1.1rem;
+        border-radius: 999px;
+        padding: 12px 30px;
         font-family: "EB Garamond", serif;
+        font-size: 1.05rem;
+        text-align: center;
         cursor: pointer;
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-        transition: background 0.3s ease;
+        margin: 12px auto;
+        display: block;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
       }
 
-      .btn-back:hover {
-        background-color: #814e3d;
+      .btn-vintage:hover {
+        background-color: #a06846;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+
+      .btn-vintage:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       }
 
       /* Lightbox */
@@ -162,17 +171,17 @@
         </div>
       </div>
 
-      <button class="btn-back" onclick="window.location.href='index.html'">
-        <- Quay lại thư
+      <button class="btn-vintage" onclick="window.location.href='index.html'">
+        &larr; Quay lại thư
       </button>
       <button
-        class="btn-back"
+        class="btn-vintage"
         onclick="window.location.href='./LoveRoom/index.html'"
       >
-        Trang tiếp theo ->
+        Trang tiếp theo &rarr;
       </button>
       <button
-        class="btn-back"
+        class="btn-vintage"
         onclick="window.location.href='https://l2002.github.io/HPBD_KimDang/'"
       >
         Xem lại web sinh nhật lần thứ 20
