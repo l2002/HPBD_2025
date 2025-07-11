@@ -65,13 +65,25 @@
         transition: transform 0.4s ease;
       }
 
+      .photo-caption {
+        text-align: center;
+        margin-top: 8px;
+        font-size: 1.5rem;
+        color: #5c3a21;
+        font-style: italic;
+        font-family: "EB Garamond", serif;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+
       .photo:hover img {
-        transform: scale(1.06);
+        transform: scale(1.02);
       }
 
       .btn-back {
         display: block;
-        margin: 50px auto 0;
+        margin: 20px auto 0;
         padding: 12px 30px;
         background-color: #9d6b53;
         color: white;
@@ -132,14 +144,32 @@
     <div class="album-container">
       <h2 class="album-title">✨ Những Khoảnh Khắc Đáng Nhớ</h2>
       <div class="gallery">
-        <div class="photo"><img src="img/1.jpg" alt="Ảnh 1" /></div>
-        <div class="photo"><img src="img/2.jpg" alt="Ảnh 2" /></div>
-        <div class="photo"><img src="img/3.png" alt="Ảnh 3" /></div>
-        <div class="photo"><img src="img/4.png" alt="Ảnh 4" /></div>
+        <div class="photo">
+          <img src="img/1.jpg" alt="Ảnh 1" />
+          <div class="photo-caption">12/07/2023</div>
+        </div>
+        <div class="photo">
+          <img src="img/1.jpg" alt="Ảnh 1" />
+          <div class="photo-caption">12/07/2023</div>
+        </div>
+        <div class="photo">
+          <img src="img/1.jpg" alt="Ảnh 1" />
+          <div class="photo-caption">12/07/2023</div>
+        </div>
+        <div class="photo">
+          <img src="img/1.jpg" alt="Ảnh 1" />
+          <div class="photo-caption">12/07/2023</div>
+        </div>
       </div>
 
       <button class="btn-back" onclick="window.location.href='index.html'">
-        ← Quay lại thư
+        <- Quay lại thư
+      </button>
+      <button
+        class="btn-back"
+        onclick="window.location.href='./LoveRoom/index.html'"
+      >
+        Trang tiếp theo ->
       </button>
       <button
         class="btn-back"
@@ -163,9 +193,6 @@
 
     <!-- GSAP + Lightbox logic -->
     <script>
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Scroll animation
       gsap.utils.toArray(".photo").forEach((el, i) => {
         gsap.to(el, {
           opacity: 1,
@@ -179,6 +206,13 @@
             trigger: el,
             start: "top 90%",
             toggleActions: "play none none none",
+          },
+          onUpdate: () => {
+            const caption = el.querySelector(".photo-caption");
+            if (caption) {
+              caption.style.opacity = "1";
+              caption.style.transform = "translateY(0)";
+            }
           },
         });
       });
