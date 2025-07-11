@@ -224,8 +224,6 @@
 
       document.querySelectorAll(".photo img").forEach((img) => {
         img.addEventListener("click", () => {
-          clickSound.currentTime = 0;
-          clickSound.play();
           lightboxImg.src = img.src;
           lightbox.classList.add("active");
         });

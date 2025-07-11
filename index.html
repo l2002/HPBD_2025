@@ -107,28 +107,24 @@
       .vang {
         position: absolute;
         bottom: 50px;
-        right: 5px;
+        right: 25px;
         width: 100px;
         z-index: 2;
         filter: sepia(0.6);
         opacity: 0;
-        animation: fadeInVang 5s ease-in forwards;
+        transition: opacity 1s ease-in;
       }
+
+      .vang.show {
+        opacity: 0.9;
+      }
+
       @keyframes fadeInFlower {
         from {
           opacity: 0;
         }
         to {
           opacity: 0.8;
-        }
-      }
-
-      @keyframes fadeInVang {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 0.9;
         }
       }
       #letter {
@@ -239,7 +235,10 @@
         if (i < content.length) {
           el.innerHTML += content.charAt(i);
           i++;
-          setTimeout(typeWriter, 80);
+          setTimeout(typeWriter, 60);
+        } else {
+          const vang = document.querySelector(".vang");
+          vang.classList.add("show");
         }
       }
 
