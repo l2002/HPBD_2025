@@ -15,6 +15,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
+    <!-- Toast -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
     <!-- Lightbox CSS -->
     <style>
       body {
@@ -84,7 +92,6 @@
       .video video {
         border-radius: 12px;
         width: 100%;
-        display: block;
         transition: transform 0.4s ease;
       }
       .btn-vintage {
@@ -144,6 +151,20 @@
         pointer-events: auto;
       }
 
+      .audio-control {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 248, 240, 0.95);
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        font-family: "EB Garamond", serif;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 100;
+      }
+
       @media (max-width: 500px) {
         .album-title {
           font-size: 2rem;
@@ -157,83 +178,88 @@
   </head>
   <body>
     <div class="album-container">
+      <div class="audio-control" onclick="toggleMusic()">🎵 Bật / Tắt nhạc</div>
       <h2 class="album-title">✨ Những Khoảnh Khắc Đáng Nhớ</h2>
       <div class="gallery">
         <div class="photo">
           <img src="img/t12_2023.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 12/2023</div>
         </div>
         <div class="photo">
           <img src="img/t1_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 01/2024</div>
         </div>
         <div class="photo">
           <img src="img/t2_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 02/2024</div>
         </div>
         <div class="photo">
           <img src="img/t3_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 03/2024</div>
         </div>
         <div class="photo">
           <img src="img/t4_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 04/2024</div>
         </div>
         <div class="photo">
           <img src="img/t5_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 05/2024</div>
         </div>
         <div class="photo">
           <img src="img/t6_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 06/2024</div>
         </div>
         <div class="photo">
           <img src="img/t7_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 07/2024</div>
         </div>
         <div class="photo">
           <img src="img/t8_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 08/2024</div>
         </div>
         <div class="photo">
           <img src="img/t9_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 09/2024</div>
         </div>
         <div class="photo">
           <img src="img/t10_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 10/2024</div>
         </div>
         <div class="photo">
-          <img src="img/t11_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <img src="img/noimg.jpg" alt="Ảnh" />
+          <div class="photo-caption">Tháng 11/2024</div>
         </div>
         <div class="photo">
           <img src="img/t12_2024.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 12/2024</div>
         </div>
         <div class="photo">
           <img src="img/t1_2025.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 01/2025</div>
         </div>
         <div class="photo">
           <img src="img/t2_2025.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 02/2025</div>
         </div>
         <div class="photo">
           <img src="img/t3_2025.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 03/2025</div>
         </div>
         <div class="photo">
-          <img src="img/t4_2025.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <img src="img/noimg.jpg" alt="Ảnh" />
+          <div class="photo-caption">Tháng 04/2025</div>
         </div>
         <div class="photo">
-          <img src="img/t5_2025.jpg" alt="Ảnh" />
-          <div class="photo-caption">12/07/2023</div>
+          <img src="img/t05_2025.jpg" alt="Ảnh" />
+          <div class="photo-caption">Tháng 05/2025</div>
         </div>
         <div class="video">
           <video src="img/t06_2025.mp4" controls>
-          <div class="photo-caption">12/07/2023</div>
+          <div class="photo-caption">Tháng 06/2025</div>
+        </div>
+        <div class="video">
+          <video src="img/t06_2025.mp4" controls>
+          <div class="photo-caption">Tháng 07/2025</div>
         </div>
       </div>
 
@@ -261,10 +287,35 @@
 
     <!-- Audio -->
     <audio
-      id="clickSound"
-      src="[Vietsub Lyrics] Time machine - mj apanay (feat. aren park).mp3"
-      preload="auto"
+      id="bgmusic" autoplay loop
+      src="img/One Last Time x Coral Sea - Ariana Grande Lyrics Vietsub .mp3"
     ></audio>
+
+     <div
+      class="position-fixed top-0 end-0 p-3"
+      style="margin-top: 50px"
+      style="z-index: 1055"
+    >
+      <div
+        id="liveToast"
+        class="toast hide"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Thông báo</strong>
+          <small class="text-muted">Bây giờ</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastBody"></div>
+      </div>
+    </div>
 
     <!-- GSAP + Lightbox logic -->
     <script>
@@ -295,7 +346,6 @@
       // Lightbox + Sound
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = lightbox.querySelector("img");
-      const clickSound = document.getElementById("clickSound");
 
       document.querySelectorAll(".photo img").forEach((img) => {
         img.addEventListener("click", () => {
@@ -307,6 +357,29 @@
       lightbox.addEventListener("click", () => {
         lightbox.classList.remove("active");
       });
+
+      function toggleMusic() {
+        const music = document.getElementById("bgmusic");
+        const toastBody = document.getElementById("toastBody");
+        const toastEl = document.getElementById("liveToast");
+
+        if (music.paused) {
+          music.play();
+          toastBody.innerText = "🎵 Nhạc đã bật";
+        } else {
+          music.pause();
+          toastBody.innerText = "🔇 Nhạc đã tắt";
+        }
+
+        // Hiện toast
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+      }
     </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
