@@ -169,6 +169,58 @@
           padding: 25px 15px;
         }
       }
+
+      /* Thay thế CSS cũ của .year-divider bằng đoạn này */
+      .year-divider {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        grid-column: 1 / -1;
+        opacity: 0; /* Thêm dòng này để ban đầu ẩn divider */
+      }
+
+      .year-divider::before,
+      .year-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #d2b48c,
+          #a0522d,
+          #d2b48c,
+          transparent
+        );
+      }
+
+      .year-divider span {
+        padding: 0 20px;
+        font-family: "Great Vibes", cursive;
+        font-size: 2.2rem;
+        color: #a0522d;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transform: scale(0); /* Thêm dòng này để ban đầu ẩn năm */
+      }
+
+      .year-divider span::before,
+      .year-divider span::after {
+        content: "❦";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #d2b48c;
+        font-size: 1.2rem;
+      }
+
+      .year-divider span::before {
+        left: -5px;
+      }
+
+      .year-divider span::after {
+        right: -5px;
+      }
     </style>
   </head>
   <body>
@@ -176,10 +228,21 @@
       <div class="audio-control" onclick="toggleMusic()">🎵 Bật / Tắt nhạc</div>
       <h2 class="album-title">✨ Những Khoảnh Khắc Đáng Nhớ</h2>
       <div class="gallery">
+        <
+        <div class="year-divider">
+          <span>2023</span>
+        </div>
+
         <div class="photo">
           <img src="img/t12_2023.jpg" alt="Ảnh" />
           <div class="photo-caption">Tháng 12/2023</div>
         </div>
+
+        <!-- Đường gạch ngăn cách các năm -->
+        <div class="year-divider">
+          <span>2024</span>
+        </div>
+
         <div class="photo">
           <img src="img/t1_2024.jpg" alt="Ảnh" />
           <div class="photo-caption">Tháng 01/2024</div>
@@ -222,12 +285,20 @@
         </div>
         <div class="photo">
           <img src="img/noimg.jpg" alt="Ảnh" />
-          <div class="photo-caption">Tháng 11/2024</div>
+          <div class="photo-caption">
+            Tháng 11/2024
+            <p>Khum có hình</p>
+          </div>
         </div>
         <div class="photo">
           <img src="img/t12_2024.jpg" alt="Ảnh" />
           <div class="photo-caption">Tháng 12/2024</div>
         </div>
+
+        <div class="year-divider">
+          <span>2025</span>
+        </div>
+
         <div class="photo">
           <img src="img/t1_2025.jpg" alt="Ảnh" />
           <div class="photo-caption">Tháng 01/2025</div>
@@ -242,7 +313,10 @@
         </div>
         <div class="photo">
           <img src="img/noimg.jpg" alt="Ảnh" />
-          <div class="photo-caption">Tháng 04/2025</div>
+          <div class="photo-caption">
+            Tháng 04/2025
+            <p>Khum có hình</p>
+          </div>
         </div>
         <div class="photo">
           <img src="img/t05_2025.jpg" alt="Ảnh" />
@@ -322,12 +396,12 @@
           y: 0,
           scale: 1,
           rotate: 0,
-          duration: 0.8,
-          delay: i * 0.1,
-          ease: "back.out(1.7)",
+          duration: 1.2,
+          delay: i * 0.15,
+          ease: "back.out(2)",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top 85%",
             toggleActions: "play none none none",
           },
           onUpdate: () => {
@@ -372,6 +446,35 @@
         const toast = new bootstrap.Toast(toastEl);
         toast.show();
       }
+
+      //Divider
+      // Thêm đoạn này vào trong script GSAP hiện có
+      gsap.utils.toArray(".year-divider").forEach((divider) => {
+        // Tạo ScrollTrigger cho divider
+        gsap.to(divider, {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: divider,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        // Animation riêng cho năm
+        gsap.to(divider.querySelector("span"), {
+          scale: 1,
+          rotation: 0,
+          duration: 1.2,
+          ease: "elastic.out(1, 0.5)",
+          scrollTrigger: {
+            trigger: divider,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
