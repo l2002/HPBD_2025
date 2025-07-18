@@ -94,7 +94,7 @@
       .flower {
         position: absolute;
         top: 190px;
-        right: 40px;
+        right: 15px;
         width: 120px;
         rotate: 12deg;
         z-index: 2;
@@ -106,8 +106,8 @@
 
       .vang {
         position: absolute;
-        bottom: 50px;
-        right: 25px;
+        bottom: 20px;
+        right: 35px;
         width: 100px;
         z-index: 2;
         filter: sepia(0.6);
@@ -225,11 +225,12 @@
 Tháng: Chồng mê em
 Năm: Luan thuộc về em
 To: Em bé iu dấu của chồng
-
-  Lá thư này viết trên nền giấy cũ, nhưng chứa đựng tình cảm anh luôn mới.
+  
+  Hôm nay không phải là một ngày bình thường, vì vào ngày này... thế giới chính thức nhận được một món quà tên là Kim Dàng, còn anh thì may mắn nhận được chính trái tim của món quà đó sau 19 năm 🥹. Để ròi hôm nay, một lần nữa được chúc mừng sinh nhần lần thứ 2 của ẻm.
   Mỗi dòng là một nhịp đập con tim – nhẹ nhàng, chậm rãi, và đầy yêu thương.
   Dù năm tháng có trôi, tình anh dành cho em vẫn dịu dàng như buổi sớm ban mai...
-  — Anh
+  Thương em - thương đến già nua,
+  - Luan của bé
 `;
 
       let i = 0;
@@ -238,7 +239,7 @@ To: Em bé iu dấu của chồng
         if (i < content.length) {
           el.innerHTML += content.charAt(i);
           i++;
-          setTimeout(typeWriter, 60);
+          setTimeout(typeWriter, 70);
         } else {
           const vang = document.querySelector(".vang");
           vang.classList.add("show");
