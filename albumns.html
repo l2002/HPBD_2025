@@ -326,7 +326,7 @@
           <div class="photo-caption">Tháng 06/2025</div>
         </div>
         <div class="photo">
-          <img src="img/t6_2025.jpg" alt="Ảnh" />
+          <img src="img/t7_2025.jpg" alt="Ảnh" />
           <div class="photo-caption">Tháng 07/2025</div>
         </div>
       </div>
@@ -334,12 +334,14 @@
       <button class="btn-vintage" onclick="window.location.href='index.html'">
         &larr; Quay lại thư
       </button>
-      <button
-        class="btn-vintage"
-        onclick="window.location.href='./LoveRoom/index.html'"
-      >
-        Trang tiếp theo &rarr;
-      </button>
+      <span id="btn">
+        <button
+          class="btn-vintage"
+          onclick="window.location.href='./LoveRoom/index.html'"
+        >
+          Trang tiếp theo &rarr;
+        </button>
+      </span>
       <button
         class="btn-vintage"
         onclick="window.location.href='https://l2002.github.io/HPBD_KimDang/'"
@@ -480,5 +482,13 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script>
+    <script type="module">
+      import { annotate } from "https://unpkg.com/rough-notation?module";
+
+      const n3 = document.querySelector("#btn");
+      const a3 = annotate(n3, { type: "box", color: "red" });
+
+      a3.show();
+    </script>
   </body>
 </html>

@@ -107,6 +107,8 @@ const heartImages = [
   "./image/4.jpg",
   "./image/5.jpg",
   "./image/6.jpg",
+  "./image/v7.jpg",
+  "./image/v8.jpg",
   "./image/heart.png",
 ];
 
